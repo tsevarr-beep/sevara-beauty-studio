@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif", ui-serif, Georgia, serif;
+
+  --color-brand-cream: #fbf9f7;
+  --color-brand-gold: #735c00;
+  --color-brand-gold-soft: #d4af37;
+  --color-brand-text: #1b1c1b;
+  --color-brand-text-muted: #4d4635;
+  --color-brand-border: #d0c5af;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-cream text-brand-text font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/85 backdrop-blur-2xl border border-white/50 shadow-[0_8px_32px_rgba(115,92,0,0.04)];
+  }
+  
+  .glass-dark {
+    @apply bg-brand-text/10 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.05)];
+  }
+
+  .premium-shadow {
+    box-shadow: 0 20px 40px -10px rgba(115, 92, 0, 0.08), 0 10px 20px -5px rgba(0, 0, 0, 0.02);
+  }
+
+  .premium-card {
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .premium-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -12px rgba(115, 92, 0, 0.12);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
