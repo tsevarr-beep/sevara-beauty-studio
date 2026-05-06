@@ -1,4 +1,4 @@
-# Sevara Beauty Studio
+sevara-beauty-studio-app# Sevara Beauty Studio
 
 Modern ve premium güzellik salonu mobil uygulaması projesi.
 
