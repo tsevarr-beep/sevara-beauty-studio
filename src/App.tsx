@@ -30,8 +30,162 @@ import {
   Trash2,
   ChevronLeft,
   MessageSquare,
-  Send
+  Send,
+  MapPin,
+  Phone,
+  Instagram,
+  Coffee,
+  IceCream,
+  Wind,
+  Navigation,
+  ExternalLink
 } from 'lucide-react';
+
+// ... (existing imports and types)
+
+const ContactScreen = ({ setScreen }: { setScreen: (s: Screen) => void }) => {
+  const images = [
+    "https://images.unsplash.com/photo-1519415355175-bd09406433d7?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1621210170562-b9e73dc3e75e?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1522337094846-8a818192de1f?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1600334129128-685c4582f989?auto=format&fit=crop&q=80&w=800"
+  ];
+
+  return (
+    <div className="pt-28 pb-32 px-6 max-w-2xl mx-auto">
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+        <div className="flex items-center gap-4 mb-8">
+          <button onClick={() => setScreen('home')} className="p-2 hover:bg-brand-gold/5 rounded-full text-brand-gold">
+            <ChevronLeft size={24} />
+          </button>
+          <h2 className="text-3xl font-serif">İletişim & Deneyim</h2>
+        </div>
+      </motion.div>
+
+      {/* Salon Gallery */}
+      <section className="mb-12 -mx-6 px-6 flex gap-4 overflow-x-auto no-scrollbar snap-x">
+        {images.map((img, i) => (
+          <div key={i} className="min-w-[280px] h-64 rounded-[3rem] overflow-hidden shadow-xl snap-center relative group">
+            <PremiumImage src={img} alt="Salon" className="w-full h-full hover:scale-105 transition-transform duration-1000" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+          </div>
+        ))}
+      </section>
+
+      {/* Experience Section */}
+      <section className="mb-12">
+        <div className="glass p-8 rounded-[2.5rem] border border-white/40 shadow-sm">
+          <h3 className="text-xl font-serif mb-4 leading-tight">Salon Deneyimi</h3>
+          <p className="text-sm text-brand-text-muted leading-relaxed opacity-80 mb-8">
+            Sevara Beauty Studio’da müşterilerimize konforlu ve premium bir deneyim sunuyoruz. Her detay misafirlerimizin huzuru için tasarlandı.
+          </p>
+          
+          <div className="grid grid-cols-2 gap-6">
+            <div className="flex flex-col items-center gap-3 p-4 bg-brand-cream/30 rounded-[2rem]">
+              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand-gold shadow-sm">
+                <Coffee size={24} />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-brand-text-muted">Çay & Kahve</span>
+            </div>
+            <div className="flex flex-col items-center gap-3 p-4 bg-brand-cream/30 rounded-[2rem]">
+              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand-gold shadow-sm">
+                <IceCream size={24} />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-brand-text-muted">Soğuk İçecekler</span>
+            </div>
+            <div className="flex flex-col items-center gap-3 p-4 bg-brand-cream/30 rounded-[2rem]">
+              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand-gold shadow-sm">
+                <LayoutGrid size={24} />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-brand-text-muted">Bekleme Alanı</span>
+            </div>
+            <div className="flex flex-col items-center gap-3 p-4 bg-brand-cream/30 rounded-[2rem]">
+              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand-gold shadow-sm">
+                <Star size={24} />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-brand-text-muted">Premium Lounge</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Location & Contact */}
+      <section className="mb-12 space-y-6">
+        <div className="glass p-8 rounded-[2.5rem] border border-white/40 shadow-sm">
+          <div className="flex items-start gap-4 mb-6">
+            <div className="p-3 bg-brand-gold/10 text-brand-gold rounded-2xl">
+              <MapPin size={24} />
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-1">Adresimiz</h4>
+              <p className="text-sm text-brand-text-muted opacity-80 leading-relaxed">
+                Nişantaşı Mahallesi, Abdi İpekçi Caddesi<br />No: 42, Kat: 3, Şişli / İstanbul
+              </p>
+            </div>
+          </div>
+          
+          <div className="h-40 bg-brand-cream/50 rounded-[2rem] mb-6 overflow-hidden relative">
+            <PremiumImage 
+              src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800" 
+              className="w-full h-full opacity-60 grayscale" 
+              alt="Map" 
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="bg-brand-text text-white p-4 rounded-3xl flex items-center gap-2 shadow-2xl">
+                <Navigation size={18} className="text-brand-gold" />
+                <span className="text-[11px] font-bold uppercase tracking-widest">Yol Tarifi Al</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <button className="w-full h-16 glass rounded-2xl flex items-center justify-between px-6 border border-brand-border/10">
+              <div className="flex items-center gap-3">
+                <Phone size={18} className="text-brand-gold" />
+                <span className="text-sm font-medium">0212 555 00 00</span>
+              </div>
+              <div className="w-8 h-8 bg-brand-gold/10 rounded-full flex items-center justify-center">
+                <ArrowRight size={14} className="text-brand-gold" />
+              </div>
+            </button>
+            <button className="w-full h-16 bg-[#25D366]/10 text-[#075E54] rounded-2xl flex items-center justify-between px-6 border border-[#25D366]/20">
+              <div className="flex items-center gap-3">
+                <MessageSquare size={18} />
+                <span className="text-sm font-bold">WhatsApp Hattı</span>
+              </div>
+              <ExternalLink size={14} />
+            </button>
+            <button className="w-full h-16 bg-gradient-to-r from-[#833ab4]/10 via-[#fd1d1d]/10 to-[#fcb045]/10 text-[#833ab4] rounded-2xl flex items-center justify-between px-6 border border-[#833ab4]/20">
+              <div className="flex items-center gap-3">
+                <Instagram size={18} />
+                <span className="text-sm font-bold">@sevarabeautystudio</span>
+              </div>
+              <ExternalLink size={14} />
+            </button>
+          </div>
+        </div>
+
+        {/* Working Hours */}
+        <div className="glass p-8 rounded-[2.5rem] border border-white/40 shadow-sm">
+          <div className="flex items-center gap-4 mb-6">
+            <Clock size={20} className="text-brand-gold" />
+            <h4 className="font-bold text-lg">Çalışma Saatleri</h4>
+          </div>
+          <div className="space-y-4">
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-brand-text-muted opacity-80">Pazartesi - Cumartesi</span>
+              <span className="font-bold">09:00 - 20:00</span>
+            </div>
+            <div className="flex justify-between items-center text-sm opacity-50">
+              <span className="text-brand-text-muted">Pazar</span>
+              <span className="font-bold">Kapalı</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
 
 import { 
   LOGO_URL, 
@@ -43,34 +197,80 @@ import {
 import { db, User as UserType, Appointment } from './services/db';
 
 // --- Types ---
-type Screen = 'splash' | 'login' | 'home' | 'services' | 'gallery' | 'profile' | 'booking' | 'notifications' | 'admin' | 'settings' | 'messages' | 'chat';
+type Screen = 'splash' | 'login' | 'home' | 'services' | 'gallery' | 'profile' | 'booking' | 'notifications' | 'admin' | 'settings' | 'messages' | 'chat' | 'contact';
 
 // --- Components ---
 
-const TopBar = ({ title, onNotify }: { title: string, onNotify: () => void }) => (
+const PremiumImage = ({ 
+  src, 
+  alt, 
+  className, 
+  fallback = "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800" 
+}: { 
+  src: string, 
+  alt: string, 
+  className?: string,
+  fallback?: string
+}) => {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  return (
+    <div className={`relative overflow-hidden bg-brand-cream/50 ${className}`}>
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.div 
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+            className="w-6 h-6 border-2 border-brand-gold/10 border-t-brand-gold rounded-full"
+          />
+        </div>
+      )}
+      <img
+        src={error ? fallback : src}
+        alt={alt}
+        referrerPolicy="no-referrer"
+        className={`w-full h-full object-cover transition-all duration-700 ${loading ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}`}
+        onLoad={() => setLoading(false)}
+        onError={() => {
+          setError(true);
+          setLoading(false);
+        }}
+      />
+    </div>
+  );
+};
+
+const TopBar = ({ title, onNotify, onContact }: { title: string, onNotify: () => void, onContact: () => void }) => (
   <header className="fixed top-0 w-full z-50 glass px-6 py-5 flex justify-between items-center shadow-sm">
     <div className="flex items-center gap-4">
       <motion.div 
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="relative"
+        onClick={onContact}
+        className="relative cursor-pointer"
       >
         <div className="absolute inset-0 bg-brand-gold/20 blur-lg rounded-full" />
-        <img src={LOGO_URL} alt="Logo" className="relative w-12 h-12 rounded-full border-2 border-white premium-shadow object-cover" />
+        <img src={LOGO_URL} referrerPolicy="no-referrer" alt="Logo" className="relative w-12 h-12 rounded-full border-2 border-white premium-shadow object-cover" />
       </motion.div>
-      <div className="flex flex-col">
+      <div className="flex flex-col cursor-pointer" onClick={onContact}>
         <h1 className="text-xl font-serif font-bold tracking-tight text-brand-gold leading-none">Sevara</h1>
         <span className="text-[9px] uppercase tracking-[0.2em] text-brand-text-muted font-bold mt-1">Beauty Studio</span>
       </div>
     </div>
-    <button onClick={onNotify} className="relative p-2.5 text-brand-gold hover:bg-brand-gold/5 rounded-full transition-all">
-      <Bell size={22} />
-      <motion.span 
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        className="absolute top-2 right-2 w-2.5 h-2.5 bg-brand-gold-soft rounded-full border-2 border-white" 
-      />
-    </button>
+    <div className="flex items-center gap-2">
+      <button onClick={onContact} className="p-2.5 text-brand-gold hover:bg-brand-gold/5 rounded-full transition-all">
+        <MapPin size={22} />
+      </button>
+      <button onClick={onNotify} className="relative p-2.5 text-brand-gold hover:bg-brand-gold/5 rounded-full transition-all">
+        <Bell size={22} />
+        <motion.span 
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          className="absolute top-2 right-2 w-2.5 h-2.5 bg-brand-gold-soft rounded-full border-2 border-white" 
+        />
+      </button>
+    </div>
   </header>
 );
 
@@ -132,7 +332,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           className="w-40 h-40 mb-12 relative flex items-center justify-center"
         >
           <div className="absolute inset-0 bg-brand-gold/5 blur-3xl rounded-full" />
-          <img src={LOGO_URL} alt="Logo" className="relative w-full h-full object-contain" />
+          <img src={LOGO_URL} referrerPolicy="no-referrer" alt="Logo" className="relative w-full h-full object-contain" />
           
           <motion.div 
             animate={{ rotate: 360 }}
@@ -206,7 +406,7 @@ const LoginScreen = ({ setScreen, setUser }: { setScreen: (s: Screen) => void, s
         className="relative z-10 w-full max-w-md glass p-10 rounded-[2rem] shadow-2xl"
       >
         <div className="flex justify-center mb-8">
-          <img src={LOGO_URL} alt="Logo" className="w-24 h-24 rounded-full shadow-lg" />
+          <img src={LOGO_URL} referrerPolicy="no-referrer" alt="Logo" className="w-24 h-24 rounded-full shadow-lg" />
         </div>
         <h2 className="text-3xl font-serif text-center mb-2">Hoş Geldiniz</h2>
         <p className="text-brand-text-muted text-center mb-8">Güzellik ritüelinize kaldığınız yerden devam edin.</p>
@@ -259,14 +459,14 @@ const HomeScreen = ({ setScreen }: { setScreen: (s: Screen) => void }) => {
 
       <section className="mb-12 -mx-6 px-6 flex gap-5 overflow-x-auto no-scrollbar snap-x">
         {CAMPAIGNS.map((c, i) => (
-          <div key={i} className="min-w-[300px] aspect-[16/10] rounded-[2rem] overflow-hidden relative snap-center shadow-xl group border border-white/20">
-            <img src={c.img} className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-1000" alt={c.title} />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
-              <span className={`text-[9px] ${c.color} text-white px-2.5 py-1 rounded-full w-max mb-3 font-bold tracking-[0.15em] uppercase shadow-sm`}>
+          <div key={i} className="min-w-[300px] aspect-[16/10] rounded-[2.5rem] overflow-hidden relative snap-center shadow-2xl group border border-white/20">
+            <PremiumImage src={c.img} alt={c.title} className="w-full h-full transition-transform group-hover:scale-105 duration-1000" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-8">
+              <span className={`text-[9px] ${c.color} text-white px-3 py-1.5 rounded-xl w-max mb-3 font-bold tracking-[0.2em] uppercase shadow-sm backdrop-blur-sm border border-white/10`}>
                 Kampanya
               </span>
-              <h3 className="text-2xl font-bold text-white font-serif mb-1">{c.title}</h3>
-              <p className="text-xs text-white/70 font-medium leading-relaxed max-w-[200px]">{c.desc}</p>
+              <h3 className="text-2xl font-bold text-white font-serif mb-1 tracking-tight">{c.title}</h3>
+              <p className="text-[11px] text-white/70 font-medium leading-relaxed max-w-[220px]">{c.desc}</p>
             </div>
           </div>
         ))}
@@ -289,25 +489,31 @@ const HomeScreen = ({ setScreen }: { setScreen: (s: Screen) => void }) => {
         <div className="flex justify-between items-end mb-6">
           <h2 className="text-2xl font-serif">Popüler İşlemler</h2>
           <div className="flex gap-4">
-            <button className="text-[10px] font-bold text-brand-gold uppercase tracking-[0.2em] border-b border-brand-gold/20 pb-1" onClick={() => setScreen('gallery')}>Galeri</button>
             <button className="text-[10px] font-bold text-brand-gold uppercase tracking-[0.2em] border-b border-brand-gold/20 pb-1" onClick={() => setScreen('services')}>Hepsine Göz At</button>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SERVICES.slice(0, 2).map((s, i) => (
             <motion.div 
               key={i} 
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -8 }}
               onClick={() => setScreen('services')}
-              className="glass rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all cursor-pointer group"
+              className="glass rounded-[3rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer group border-2 border-white/80"
             >
-              <div className="aspect-[4/5] bg-brand-cream relative overflow-hidden">
-                <img src={s.img} className="w-full h-full object-cover transition-transform group-hover:scale-110 duration-700" alt={s.name} />
-                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
+              <div className="aspect-[16/10] relative overflow-hidden">
+                <PremiumImage src={s.img} alt={s.name} className="w-full h-full transition-transform group-hover:scale-110 duration-1000" />
+                <div className="absolute top-4 left-4 glass px-3 py-1.5 rounded-xl text-[9px] font-bold uppercase tracking-widest text-brand-gold flex items-center gap-1.5 backdrop-blur-md border border-white/50">
+                  <Star size={10} fill="currentColor" /> {s.category}
+                </div>
               </div>
-              <div className="p-5">
-                <h3 className="font-serif text-lg leading-tight mb-1">{s.name}</h3>
-                <p className="text-[10px] text-brand-text-muted font-bold uppercase tracking-widest">{s.duration} Dakika • ₺{s.price}</p>
+              <div className="p-8">
+                <h3 className="font-serif text-xl leading-tight mb-3 tracking-tight">{s.name}</h3>
+                <div className="flex justify-between items-center pt-4 border-t border-brand-border/10">
+                  <div className="flex items-center gap-2 text-[10px] text-brand-text-muted font-bold uppercase tracking-widest opacity-60">
+                    <Clock size={10} className="text-brand-gold" /> <span>{s.duration} DK</span>
+                  </div>
+                  <span className="text-xl font-serif font-bold text-brand-text">₺{s.price}</span>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -327,8 +533,8 @@ const HomeScreen = ({ setScreen }: { setScreen: (s: Screen) => void }) => {
               viewport={{ once: true }}
               className="flex flex-col items-center min-w-[90px] group"
             >
-              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-brand-gold/10 mb-4 shadow-sm group-hover:border-brand-gold/40 transition-colors p-1">
-                <img src={e.img} className="w-full h-full object-cover rounded-full" alt={e.name} />
+              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-brand-gold/10 mb-4 shadow-xl group-hover:border-brand-gold/40 transition-all p-1.5 bg-white backdrop-blur-md">
+                <PremiumImage src={e.img} className="w-full h-full rounded-full" alt={e.name} />
               </div>
               <span className="text-sm font-bold text-center leading-tight mb-1">{e.name}</span>
               <span className="text-[9px] text-brand-text-muted text-center uppercase tracking-[0.2em] font-bold opacity-60">{e.role}</span>
@@ -342,27 +548,32 @@ const HomeScreen = ({ setScreen }: { setScreen: (s: Screen) => void }) => {
 
 const ServicesScreen = ({ setScreen }: { setScreen: (s: Screen) => void }) => {
   const [activeTab, setActiveTab] = useState('Tümü');
-  const categories = ['Tümü', 'Göz & Kaş', 'Cilt Bakımı', 'El & Ayak'];
+  const categories = ['Tümü', 'Göz & Kaş', 'Cilt Bakımı', 'El & Ayak', 'Klinik'];
   
   const filteredServices = activeTab === 'Tümü' 
     ? SERVICES 
     : SERVICES.filter(s => s.category === activeTab);
 
   return (
-    <div className="pt-28 pb-32 px-6 max-w-2xl mx-auto">
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-        <h2 className="text-3xl font-serif mb-8 text-center md:text-left leading-tight">İmza Ritüellerimiz</h2>
+    <div className="pt-28 pb-32 px-6 max-w-4xl mx-auto">
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }} 
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-10 text-center md:text-left"
+      >
+        <span className="text-[10px] font-bold text-brand-gold uppercase tracking-[0.3em] mb-3 block">Beauty & Beyond</span>
+        <h2 className="text-4xl font-serif leading-tight">İmza Ritüellerimiz</h2>
       </motion.div>
       
-      <div className="flex gap-3 overflow-x-auto no-scrollbar mb-12 -mx-2 px-2">
+      <div className="flex gap-3 overflow-x-auto no-scrollbar mb-12 -mx-6 px-6 py-2">
         {categories.map((cat, i) => (
           <button 
             key={i} 
             onClick={() => setActiveTab(cat)}
-            className={`whitespace-nowrap px-8 py-3 rounded-full text-xs font-bold uppercase tracking-[0.1em] transition-all duration-300 ${
+            className={`whitespace-nowrap px-8 py-3.5 rounded-full text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500 ${
               activeTab === cat 
-                ? 'bg-brand-text text-white shadow-xl scale-105' 
-                : 'bg-white text-brand-text-muted border border-brand-border/20 hover:border-brand-gold/40'
+                ? 'bg-brand-text text-white shadow-2xl scale-105' 
+                : 'bg-white/50 backdrop-blur-md text-brand-text-muted border border-brand-border/10 hover:border-brand-gold/40'
             }`}
           >
             {cat}
@@ -370,47 +581,69 @@ const ServicesScreen = ({ setScreen }: { setScreen: (s: Screen) => void }) => {
         ))}
       </div>
 
-      <div className="space-y-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <AnimatePresence mode="popLayout">
-          {filteredServices.map((s, i) => (
+          {filteredServices.map((s) => (
             <motion.div 
               key={s.id} 
               layout
               initial={{ y: 30, opacity: 0 }} 
               animate={{ y: 0, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="premium-card relative overflow-hidden group"
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="premium-card relative group flex flex-col h-full"
             >
-              <div className="glass rounded-[2.5rem] overflow-hidden shadow-lg border border-white/40">
-                <div className="h-64 relative overflow-hidden">
-                  <img src={s.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s]" alt={s.name} />
-                  <div className="absolute top-6 right-6 glass p-3 rounded-full text-brand-gold shadow-sm">
-                    <Eye size={20} />
+              <div className="glass rounded-[3.5rem] overflow-hidden shadow-2xl border border-white/60 flex flex-col w-full h-full premium-shadow bg-white/10 backdrop-blur-xl">
+                <div className="aspect-[4/3] relative overflow-hidden flex-shrink-0 group">
+                  <PremiumImage 
+                    src={s.img} 
+                    className="w-full h-full transition-transform duration-[2.5s] ease-out group-hover:scale-110" 
+                    alt={s.name} 
+                  />
+                  <div className="absolute top-6 right-6 glass p-4 rounded-full text-brand-gold shadow-lg backdrop-blur-2xl border border-white/50">
+                    <Star size={20} fill="currentColor" />
                   </div>
-                  <div className="absolute bottom-6 left-6 glass px-4 py-2 rounded-2xl text-[10px] font-bold uppercase tracking-widest text-brand-gold">
+                  <div className="absolute bottom-6 left-6 glass px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-[0.25em] text-brand-gold backdrop-blur-2xl border border-white/50">
                     {s.category}
                   </div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 </div>
-                <div className="p-8">
-                  <div className="flex justify-between items-start mb-4">
+                
+                <div className="p-12 flex flex-col flex-1">
+                  <div className="flex justify-between items-start mb-8">
                     <div className="flex-1">
-                      <h3 className="text-2xl font-serif mb-2">{s.name}</h3>
-                      <div className="flex items-center gap-4 text-[11px] font-bold text-brand-text-muted uppercase tracking-widest opacity-60">
-                        <span className="flex items-center gap-1.5"><Clock size={12} /> {s.duration} Dakika</span>
+                      <h3 className="text-3xl font-serif mb-4 leading-[1.1] tracking-tight">{s.name}</h3>
+                      <div className="flex items-center gap-5 text-[10px] font-bold text-brand-text-muted uppercase tracking-[0.2em] opacity-50">
+                        <div className="flex items-center gap-2">
+                          <Clock size={12} className="text-brand-gold" /> <span>{s.duration} DK</span>
+                        </div>
                         <span className="w-1.5 h-1.5 rounded-full bg-brand-gold/30" />
-                        <span>₺{s.price}</span>
+                        <div className="flex items-center gap-2">
+                          <Smile size={12} className="text-brand-gold" /> <span>Premium</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <p className="text-sm text-brand-text-muted mb-8 leading-relaxed opacity-80">{s.desc}</p>
-                  <motion.button 
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => setScreen('booking')}
-                    className="w-full py-5 rounded-2xl bg-brand-gold/5 text-primary font-bold uppercase tracking-widest text-[10px] hover:bg-brand-gold hover:text-white transition-all shadow-sm flex items-center justify-center gap-3"
-                  >
-                    Randevu Al <Calendar size={14} />
-                  </motion.button>
+                  
+                  <p className="text-sm text-brand-text-muted mb-12 leading-loose opacity-80 flex-1 font-medium">
+                    {s.desc}
+                  </p>
+                  
+                  <div className="flex items-center justify-between pt-8 border-t border-brand-border/10">
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-bold text-brand-text-muted uppercase tracking-widest opacity-40 mb-1">Ritüel Bedeli</span>
+                      <span className="text-3xl font-serif font-bold text-brand-text italic">₺{s.price}</span>
+                    </div>
+                    
+                    <motion.button 
+                      whileHover={{ scale: 1.05, backgroundColor: '#735c00' }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setScreen('booking')}
+                      className="px-10 py-5 rounded-3xl bg-brand-text text-white font-bold uppercase tracking-[0.25em] text-[10px] shadow-[0_20px_40px_rgba(0,0,0,0.15)] flex items-center justify-center gap-4 transition-all duration-500"
+                    >
+                      Şimdi Keşfet <ArrowRight size={16} />
+                    </motion.button>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -439,21 +672,21 @@ const GalleryScreen = () => (
           <div className="glass rounded-[3rem] overflow-hidden shadow-lg border border-white/40">
             <div className="flex h-72 bg-brand-cream overflow-hidden">
               <div className="w-1/2 relative group">
-                <img src={i === 1 ? "https://images.unsplash.com/photo-1512203530485-2cd502395777?auto=format&fit=crop&q=80&w=400" : "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=400"} className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700" alt="Öncesi" />
+                <PremiumImage src={i === 1 ? "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=400" : "https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?auto=format&fit=crop&q=80&w=400"} alt="Öncesi" className="w-full h-full grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700" />
                 <span className="absolute top-6 left-6 glass px-4 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest opacity-80 backdrop-blur-md">Öncesi</span>
               </div>
               <div className="w-1/2 relative border-l-4 border-white/50 group">
-                <img src={i === 1 ? "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=400" : "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&q=80&w=400"} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" alt="Sonrası" />
+                <PremiumImage src={i === 1 ? "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=400" : "https://images.unsplash.com/photo-1629731633519-61da127ae85d?auto=format&fit=crop&q=80&w=400"} alt="Sonrası" className="w-full h-full group-hover:scale-110 transition-transform duration-[2s]" />
                 <div className="absolute inset-0 bg-brand-gold/5" />
                 <span className="absolute top-6 right-6 bg-brand-gold text-white px-4 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-lg">Sonrası</span>
               </div>
             </div>
             <div className="p-8">
-              <h3 className="text-2xl font-serif mb-2 leading-tight">{i === 1 ? 'Cilt Yenileme Ritüeli' : 'Keratin ve Işıltı'}</h3>
+              <h3 className="text-2xl font-serif mb-2 leading-tight">{i === 1 ? 'Cilt Yenileme Ritüeli' : 'Bakış Tasarımı (PMU)'}</h3>
               <p className="text-sm text-brand-text-muted leading-relaxed opacity-70">
                 {i === 1 
                   ? 'Derinlemesine temizlik ve yoğun nem terapisi ile cildinize nefes aldırıyoruz.' 
-                  : 'Saç tellerini onaran, pürüzsüz ve göz alıcı parlaklık kazandıran profesyonel bakım.'}
+                  : 'Kişiye özel pigment analizi ile doğal ve belirgin bakışların sanatsal dönüşümü.'}
               </p>
             </div>
           </div>
@@ -478,7 +711,7 @@ const ProfileScreen = ({ user, setScreen }: { user: UserType, setScreen: (s: Scr
     <div className="pt-24 pb-32 px-5 max-w-2xl mx-auto flex flex-col items-center">
       <div className="relative mb-6">
         <div className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden glass p-1">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400" className="w-full h-full object-cover rounded-full" alt="Profil" />
+          <PremiumImage src="https://images.unsplash.com/photo-1559599101-304221938959?auto=format&fit=crop&q=80&w=400" alt="Profil" className="w-full h-full rounded-full" />
         </div>
         <button className="absolute bottom-1 right-1 bg-white p-2 rounded-full shadow-lg border border-brand-border/20 text-brand-gold hover:scale-110 transition-transform">
           <Brush size={16} />
@@ -592,7 +825,7 @@ const BookingScreen = ({ user, setScreen }: { user: UserType, setScreen: (s: Scr
         {/* Step 2: Expert */}
         <button onClick={() => setStep(2)} className={`w-full text-left glass p-6 rounded-[2.5rem] flex items-center gap-5 shadow-sm border transition-all ${step === 2 ? 'border-brand-gold ring-2 ring-brand-gold/10' : 'border-brand-border/10'} relative overflow-hidden group`}>
           <div className="w-16 h-16 rounded-[1.5rem] overflow-hidden glass p-1 flex-shrink-0">
-            <img src={selectedExpert.img} className="w-full h-full object-cover rounded-[1.2rem]" alt="Uzman" />
+            <img src={selectedExpert.img} referrerPolicy="no-referrer" className="w-full h-full object-cover rounded-[1.2rem]" alt="Uzman" />
           </div>
           <div className="flex-1">
             <p className="text-[9px] uppercase font-bold text-brand-gold tracking-[0.2em] mb-1">Uzmanımız</p>
@@ -610,7 +843,7 @@ const BookingScreen = ({ user, setScreen }: { user: UserType, setScreen: (s: Scr
                 onClick={() => { setSelectedExpert(e); setStep(3); }}
                 className={`p-4 rounded-2xl border flex flex-col items-center gap-2 transition-all ${selectedExpert.id === e.id ? 'bg-brand-gold text-white border-transparent' : 'bg-white border-brand-border/10 text-brand-text'}`}
               >
-                <img src={e.img} className="w-12 h-12 rounded-full object-cover" alt="" />
+                <img src={e.img} referrerPolicy="no-referrer" className="w-12 h-12 rounded-full object-cover" alt="" />
                 <span className="text-xs font-bold">{e.name}</span>
               </button>
             ))}
@@ -780,17 +1013,17 @@ const AdminScreen = ({ setScreen }: { setScreen: (s: Screen) => void }) => {
             <Plus size={24} /> Yeni Hizmet Ekle
           </button>
           {SERVICES.map(s => (
-            <div key={s.id} className="glass p-6 rounded-[2rem] flex items-center justify-between shadow-sm">
+            <div key={s.id} className="glass p-6 rounded-[2rem] flex items-center justify-between shadow-sm border border-brand-border/10">
               <div className="flex items-center gap-4">
-                <img src={s.img} className="w-12 h-12 rounded-xl object-cover" alt="" />
+                <PremiumImage src={s.img} alt={s.name} className="w-14 h-14 rounded-2xl shadow-sm" />
                 <div>
-                  <h4 className="font-bold">{s.name}</h4>
-                  <p className="text-xs text-brand-text-muted">₺{s.price} • {s.duration} dk</p>
+                  <h4 className="font-bold text-sm">{s.name}</h4>
+                  <p className="text-[10px] text-brand-text-muted uppercase tracking-widest font-bold opacity-60">₺{s.price} • {s.duration} dk</p>
                 </div>
               </div>
               <div className="flex gap-2">
-                <button className="p-2 bg-brand-cream text-brand-gold rounded-lg"><Brush size={16} /></button>
-                <button className="p-2 bg-red-50 text-red-600 rounded-lg"><Trash2 size={16} /></button>
+                <button className="p-2.5 bg-brand-cream/80 text-brand-gold rounded-xl hover:bg-white transition-colors shadow-sm"><Brush size={16} /></button>
+                <button className="p-2.5 bg-red-50 text-red-600 rounded-xl hover:bg-red-100 transition-colors shadow-sm"><Trash2 size={16} /></button>
               </div>
             </div>
           ))}
@@ -909,7 +1142,7 @@ const MessagesScreen = ({ user, setScreen, setChatPartner }: { user: UserType, s
                 className="w-full glass p-6 rounded-[2rem] flex items-center gap-4 shadow-sm border border-white/40 hover:shadow-md transition-all text-left"
               >
                 <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 border-2 border-brand-gold/10">
-                  <img src={partner.img} className="w-full h-full object-cover" alt="" />
+                  <PremiumImage src={partner.img} alt={partner.name} className="w-full h-full" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-center mb-1">
@@ -937,7 +1170,7 @@ const MessagesScreen = ({ user, setScreen, setChatPartner }: { user: UserType, s
               className="flex flex-col items-center min-w-[80px]"
             >
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-gold/10 mb-2">
-                <img src={e.img} className="w-full h-full object-cover" alt="" />
+                <PremiumImage src={e.img} alt={e.name} className="w-full h-full" />
               </div>
               <span className="text-[10px] font-bold truncate w-full text-center">{e.name}</span>
             </button>
@@ -985,7 +1218,7 @@ const ChatDetailScreen = ({ user, partnerId, setScreen }: { user: UserType, part
             <ChevronLeft size={24} />
           </button>
           <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-brand-gold/10">
-            <img src={partner.img} className="w-full h-full object-cover" alt="" />
+            <PremiumImage src={partner.img} alt={partner.name} className="w-full h-full" />
           </div>
           <div>
             <h4 className="font-bold text-sm">{partner.name}</h4>
@@ -1069,15 +1302,16 @@ export default function App() {
       case 'settings': return <SettingsScreen setScreen={handleScreenChange} />;
       case 'messages': return <MessagesScreen user={user} setScreen={handleScreenChange} setChatPartner={setChatPartnerId} />;
       case 'chat': return chatPartnerId ? <ChatDetailScreen user={user} partnerId={chatPartnerId} setScreen={handleScreenChange} /> : <MessagesScreen user={user} setScreen={handleScreenChange} setChatPartner={setChatPartnerId} />;
+      case 'contact': return <ContactScreen setScreen={handleScreenChange} />;
       default: return <HomeScreen setScreen={handleScreenChange} />;
     }
   };
 
-  const showNav = !['splash', 'login', 'admin', 'settings', 'chat'].includes(screen);
+  const showNav = !['splash', 'login', 'admin', 'settings', 'chat', 'contact'].includes(screen);
 
   return (
     <div className="min-h-screen bg-brand-cream overflow-hidden">
-      {showNav && <TopBar title="Sevara Studio" onNotify={() => handleScreenChange('notifications')} />}
+      {showNav && <TopBar title="Sevara Studio" onNotify={() => handleScreenChange('notifications')} onContact={() => handleScreenChange('contact')} />}
       
       <main className="relative h-screen overflow-y-auto no-scrollbar">
         <AnimatePresence mode="wait">
