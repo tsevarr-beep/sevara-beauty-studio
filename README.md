@@ -1,20 +1,42 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 💅 Sevara Beauty Studio
 
-# Run and deploy your AI Studio app
+## 🌐 Canlı Demo
 
-This contains everything you need to run your app locally.
+https://tsevarr-beep.github.io/sevara-beauty-studio/
 
-View your app in AI Studio: https://ai.studio/apps/01830c2c-d7cd-494a-91d5-94c90d01f4f1
+---
 
-## Run Locally
+## 📱 Proje Hakkında
 
-**Prerequisites:**  Node.js
+Sevara Beauty Studio için geliştirilmiş güzellik salonu yönetim uygulamasıdır.
 
+Kullanıcılar randevularını takip edebilir, müşteri bilgilerini görüntüleyebilir ve salon işlemlerini kolayca yönetebilir.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+
+## ✨ Özellikler
+
+- Kullanıcı Girişi
+- Google ile Giriş
+- Randevu Takibi
+- Müşteri Yönetimi
+- Mobil Uyumlu Tasarım
+- Modern Arayüz
+
+---
+
+## 🛠️ Teknolojiler
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- GitHub Pages
+
+---
+
+## 🚀 Canlı Kullanım
+
+Uygulamayı görüntülemek için:
+
+https://tsevarr-beep.github.io/sevara-beauty-studio/
